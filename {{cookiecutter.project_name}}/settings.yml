@@ -1,0 +1,21 @@
+server:
+  listen_host: 127.0.0.1
+  listen_port: 5432
+
+morpfw:
+  scan:
+    - {{ cookiecutter.project_name }}
+
+application:
+  title: {{ cookiecutter.project_name }}
+  app: {{ cookiecutter.project_name }}.app:App
+  dburi: 'sqlite:///%(here)s/app.db'
+  fsblobstorage_path: '%(here)s/blobstorage'
+  authn_policy: morpfw.auth.pas:AuthnPolicy
+
+
+beaker_session:
+  session.cookie_expires: True
+  session.lock_dir: '%(here)s/beaker_lock'
+  session.type: ext.database
+  session.url: 'sqlite://'
