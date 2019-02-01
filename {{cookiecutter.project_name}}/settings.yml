@@ -14,9 +14,6 @@ application:
   fsblobstorage_path: '%(here)s/blobstorage'
   authn_policy: {{ cookiecutter.project_name }}.authn:AuthnPolicy
 
-
-beaker_session:
-  session.cookie_expires: True
-  session.lock_dir: '%(here)s/beaker_lock'
-  session.type: ext.database
-  session.url: 'sqlite://'
+security:
+  jwt:
+    master_secret: secret
