@@ -5,7 +5,9 @@ import sqlalchemy as sa
 
 
 class AppRoot(object):
-    pass
+
+    def __init__(self, request):
+        self.request = request
 
 
 class App(DefaultAuthzPolicy, morpfw.SQLApp):
@@ -23,3 +25,6 @@ def index(context, request):
         'message': 'Hello World'
     }
 
+@App.permission_rule(model=AppRoot, permission=crudperm.View)
+def allow_view(identity, context, permission):
+    return True
