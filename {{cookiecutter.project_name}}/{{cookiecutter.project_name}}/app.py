@@ -8,7 +8,7 @@ class AppRoot(object):
     pass
 
 
-class App(DefaultAuthzPolicy, morpfw.App):
+class App(DefaultAuthzPolicy, morpfw.SQLApp):
     pass
 
 
@@ -20,6 +20,6 @@ def get_approot(request):
 @App.json(model=AppRoot, permission=crudperm.View)
 def index(context, request):
     return {
-            'message': 'Hello World'
+        'message': 'Hello World'
     }
 

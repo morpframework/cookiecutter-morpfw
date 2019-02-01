@@ -1,6 +1,7 @@
 server:
   listen_host: 127.0.0.1
-  listen_port: 5432
+  listen_port: 5000
+  server_url: http://localhost:5000
 
 morpfw:
   scan:
@@ -11,7 +12,7 @@ application:
   app: {{ cookiecutter.project_name }}.app:App
   dburi: 'sqlite:///%(here)s/app.db'
   fsblobstorage_path: '%(here)s/blobstorage'
-  authn_policy: morpfw.auth.pas:AuthnPolicy
+  authn_policy: {{ cookiecutter.project_name }}.authn:AuthnPolicy
 
 
 beaker_session:
